@@ -333,7 +333,7 @@ class PythonQuizApp {
         if (isCorrect) {
             explanationBox.classList.add('correct');
             explanationIcon.textContent = '🎉';
-            explanationTitle.textContent = 'Correct di Laddu chlm 💜';
+            explanationTitle.textContent = 'Correct pa superruuuu💜';
             
             const correctAnswer = question.options[question.correct];
             explanationText.innerHTML = `
@@ -344,7 +344,7 @@ class PythonQuizApp {
         } else {
             explanationBox.classList.add('wrong');
             explanationIcon.textContent = '💡';
-            explanationTitle.textContent = 'ithu thappu di Laddu chlm en nu pakalama 💜';
+            explanationTitle.textContent = 'ithu thappu pa enanu paru kojam 💜';
             
             // Show why their answer was wrong and what the correct answer is
             const wrongAnswer = question.options[selectedIndex];
@@ -480,11 +480,11 @@ class PythonQuizApp {
         
         if (percentage >= 60) {
             // Score >= 60%
-            specialMessage.textContent = '🌟 Super Laddu Kutty! 🌟';
+            specialMessage.textContent = '🌟 Super Laddu ! 🌟';
             specialMessage.className = 'special-message success';
         } else {
             // Score < 60%
-            specialMessage.textContent = '💪 Inu Oru Round Polama Thangoo! 💪';
+            specialMessage.textContent = '💪 Inu Oru Round Polama ! 💪';
             specialMessage.className = 'special-message retry';
         }
         
