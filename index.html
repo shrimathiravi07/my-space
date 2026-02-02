@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrimathi's Space - Python Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🐍</span>
+                <h1>Shrimathi's Space</h1>
+            </div>
+            <p class="tagline">Master Python - One Quiz at a Time!</p>
+        </header>
+
+        <!-- Welcome Screen (Step 1) -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="welcome-avatar">👩‍💻</div>
+                <div class="welcome-greeting">
+                    <span class="greeting-hi">Hello!</span>
+                    <h2>Welcome Shrimathi! 💜</h2>
+                </div>
+                <p class="welcome-subtitle">This is Laddu Daily Workout Platform</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">📚</span>
+                        <span>Theory Concepts</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💻</span>
+                        <span>Code Output</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🧠</span>
+                        <span>Logic Building</span>
+                    </div>
+                </div>
+
+                <button id="letsgo-btn" class="btn btn-primary btn-glow btn-large">
+                    <span>🚀 Let's Go!</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Selection Screen (Step 2) -->
+        <div id="category-screen" class="screen">
+            <div class="welcome-content">
+                <div class="category-header">
+                    <span class="category-emoji">🎯</span>
+                    <h2>Choose Your Challenge!</h2>
+                    <p>choose you test type baby </p>
+                </div>
+
+                <div class="category-selection">
+                    <div class="category-buttons">
+                        <button class="category-btn beginner-btn" data-category="beginner">
+                            <span class="cat-icon">🌱</span>
+                            <span class="cat-title">Beginner</span>
+                            <span class="cat-desc">Start your journey</span>
+                            <span class="cat-count">15 Questions</span>
+                        </button>
+                        <button class="category-btn intermediate-btn" data-category="intermediate">
+                            <span class="cat-icon">🚀</span>
+                            <span class="cat-title">Intermediate</span>
+                            <span class="cat-desc">Level up your skills</span>
+                            <span class="cat-count">15 Questions</span>
+                        </button>
+                        <button class="category-btn advanced-btn" data-category="advanced">
+                            <span class="cat-icon">⚡</span>
+                            <span class="cat-title">Advanced</span>
+                            <span class="cat-desc">Master the concepts</span>
+                            <span class="cat-count">15 Questions</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="category-actions">
+                    <button id="back-btn" class="btn btn-secondary">
+                        <span>←</span>
+                        <span>Back</span>
+                    </button>
+                    <button id="start-btn" class="btn btn-primary btn-glow">
+                        <span>🎮 Start Quiz</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-info">
+                    <span id="question-counter">Question 1/10</span>
+                    <span id="category-badge" class="category-badge">Theory</span>
+                </div>
+                <div class="timer-score">
+                    <div class="timer">
+                        <span class="timer-icon">⏱️</span>
+                        <span id="timer">30</span>s
+                    </div>
+                    <div class="score">
+                        <span class="score-icon">⭐</span>
+                        <span id="current-score">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <div class="question-container">
+                <div id="question-type" class="question-type"></div>
+                <h2 id="question" class="question-text"></h2>
+                <pre id="code-block" class="code-block"></pre>
+            </div>
+
+            <div id="options" class="options-container"></div>
+
+            <!-- Reason Input Box -->
+            <div id="reason-box" class="reason-box hidden">
+                <div class="reason-header">
+                    <span class="reason-icon">💭</span>
+                    <h4>Entha Answer Correct etha vachu chlm solra reason solu pattu 😘<h4>
+                </div>
+                <textarea id="reason-input" class="reason-input" placeholder="Tell me your reasoning, Laddu... 💜 (optional but helps you learn better!)" rows="3"></textarea>
+            </div>
+
+            <!-- Explanation Box -->
+            <div id="explanation-box" class="explanation-box hidden">
+                <div id="explanation-icon" class="explanation-icon"></div>
+                <div class="explanation-content">
+                    <h4 id="explanation-title"></h4>
+                    <p id="explanation-text"></p>
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button id="submit-btn" class="btn btn-primary btn-glow" disabled>
+                    ✔️ Submit Answer
+                </button>
+                <button id="next-btn" class="btn btn-secondary hidden" disabled>
+                    Next Question <span>→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="confetti" id="confetti"></div>
+                <div id="result-icon" class="result-icon">🏆</div>
+                <h2 id="result-title">Quiz Completed!</h2>
+                <p id="player-result-name" class="player-name">Shrimathi</p>
+                <div id="special-message" class="special-message"></div>
+                
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="final-score">0</span>
+                        <span class="score-label">Points</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-icon">✅</span>
+                        <span id="correct-count" class="stat-value">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">❌</span>
+                        <span id="wrong-count" class="stat-value">0</span>
+                        <span class="stat-label">Wrong</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">📊</span>
+                        <span id="percentage" class="stat-value">0%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⏱️</span>
+                        <span id="time-taken" class="stat-value">0s</span>
+                        <span class="stat-label">Time</span>
+                    </div>
+                </div>
+
+                <div id="result-message" class="result-message"></div>
+
+                <div class="result-actions">
+                    <button id="review-btn" class="btn btn-secondary">
+                        📋 Review Answers
+                    </button>
+                    <button id="restart-btn" class="btn btn-primary">
+                        🔄 Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div id="review-screen" class="screen">
+            <div class="review-header">
+                <h2>📋 Answer Review</h2>
+                <button id="back-to-result" class="btn btn-small">← Back to Results</button>
+            </div>
+            <div id="review-container" class="review-container"></div>
+        </div>
+
+        <!-- Retest Modal -->
+        <div id="retest-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-icon">🔄</div>
+                <h3>Already Completed! ✅</h3>
+                <p>You've already finished this level, Shrimathi!</p>
+                <p>Once more polama chlm ma 😘</p>
+                <div class="modal-actions">
+                    <button id="cancel-retest-btn" class="btn btn-secondary">❌ Cancel</button>
+                    <button id="retest-btn" class="btn btn-primary btn-glow">🔄 Retest</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retest Message Modal -->
+        <div id="retest-message-modal" class="modal-overlay">
+            <div class="modal-content retest-message">
+                <div class="modal-icon">💪🔥</div>
+                <h3>Kappu mukiyan chlm!😘😘 😎✨</h3>
+                <p>Let's go again! 🚀</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with 💜 for Shrimathi 😘 | Shrimathi's Space © 2026</p>
+        </footer>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
